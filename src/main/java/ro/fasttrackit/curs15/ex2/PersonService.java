@@ -37,6 +37,14 @@ public class PersonService {
         return result;
     }
 
+    public List<Person> getAllPersons() {
+        List<Person> result = new ArrayList<>();
+        for (Person person: persons){
+            result.add(person);
+        }
+        return result;
+    }
+
         @Override
         public boolean equals (Object o){
             if (this == o) return true;
@@ -57,4 +65,4 @@ public class PersonService {
                     ", idNumber=" + idNumber +
                     '}';
         }
-    }
+}

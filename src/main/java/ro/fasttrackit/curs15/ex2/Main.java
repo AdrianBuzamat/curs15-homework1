@@ -13,6 +13,7 @@ public class Main {
         ));
 
         //System.out.println(personService.toString());
-        System.out.println(personService.removePerson(30));
+        System.out.println(personService.removePerson(2));
+        System.out.println(personService.getAllPersons());
     }
 }

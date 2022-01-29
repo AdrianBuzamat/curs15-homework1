@@ -32,4 +32,20 @@ public class PersonServiceTest {
                 () -> personService.removePerson(30));
         assertThat(exc.getMessage()).isEqualTo("Person with this ID was not found!");
     }
+    @Test
+    @DisplayName("WHEN display list is requested THEN must return the whole list")
+    void getAllPersons(){
+        PersonService personService = new PersonService(List.of(
+                new Person("Dorel", 22),
+                new Person("Gigel", 23)
+        ));
+
+
+        List<Person> actual = personService.getAllPersons();
+        assertThat(actual).hasSize(2).containsExactlyInAnyOrder(
+                new Person("Dorel", 22),
+                new Person("Gigel", 23)
+        );
+    }
+
 }
