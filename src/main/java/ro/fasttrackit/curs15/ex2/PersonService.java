@@ -38,11 +38,7 @@ public class PersonService {
     }
 
     public List<Person> getAllPersons() {
-        List<Person> result = new ArrayList<>();
-        for (Person person: persons){
-            result.add(person);
-        }
-        return result;
+        return persons;
     }
 
         @Override

@@ -11,16 +11,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class PersonServiceTest {
     @Test
     @DisplayName("WHEN a person is created THEN add to the list and set an ID")
-    void testAddPerson(){
+    void testAddPerson() {
         PersonService personService = new PersonService(List.of());
         Person person = new Person("Dorel", 22);
         person.setId(1);
-        Person actual= personService.addPerson(person);
+        Person actual = personService.addPerson(person);
         assertThat(actual.getId()).isEqualTo(1);
     }
+
     @Test
     @DisplayName("WHEN ID number does not exist THEN throw exception")
-    void testRemovePerson(){
+    void testRemovePerson() {
         PersonService personService = new PersonService(List.of(
                 new Person("Dorel", 22),
                 new Person("Gigel", 23),
@@ -32,20 +33,18 @@ public class PersonServiceTest {
                 () -> personService.removePerson(30));
         assertThat(exc.getMessage()).isEqualTo("Person with this ID was not found!");
     }
+
     @Test
     @DisplayName("WHEN display list is requested THEN must return the whole list")
-    void getAllPersons(){
-        PersonService personService = new PersonService(List.of(
-                new Person("Dorel", 22),
-                new Person("Gigel", 23)
-        ));
-
+    void getAllPersons() {
+        Person person1 = new Person("Dorel", 22);
+        Person person2 = new Person("Gigel", 23);
+        List<Person> personList = List.of(person1, person2);
+        PersonService personService = new PersonService(personList);
 
         List<Person> actual = personService.getAllPersons();
-        assertThat(actual).hasSize(2).containsExactlyInAnyOrder(
-                new Person("Dorel", 22),
-                new Person("Gigel", 23)
-        );
+        assertThat(actual).hasSize(2);
+        assertThat(actual).containsExactlyInAnyOrder(person1, person2);
     }
 
 }
